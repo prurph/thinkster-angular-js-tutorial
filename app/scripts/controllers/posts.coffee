@@ -1,22 +1,17 @@
 'use strict'
 
-app.controller 'PostsCtrl', ($scope, Post) ->
-  $scope.posts = Post.get()
+app.controller 'PostsCtrl', ($scope, $location, Post) ->
+  $scope.posts = Post.all
   $scope.post =
     url: 'http://'
     title: ''
 
   $scope.submitPost = ->
-    Post.save($scope.post, (ref) ->
-      $scope.posts[ref.name] = $scope.post
-      $scope.post =
-        url: 'http://'
-        title: ''
-    )
+    Post.create($scope.post).then (ref) ->
+      $location.path '/posts/' + ref.name()
+
 
   $scope.deletePost = (postId) ->
-    Post.delete({id: postId}, ->
-      delete $scope.posts[postId]
-    )
+    Post.delete(postId)
 
 #@ sourceMappingURL=posts.js.map
