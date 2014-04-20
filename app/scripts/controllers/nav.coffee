@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('NavCtrl', ($scope, $location, Post) ->
+app.controller('NavCtrl', ($scope, $location, Post, Auth) ->
   $scope.post =
     url: 'http://',
     title: ''
@@ -11,6 +11,9 @@ app.controller('NavCtrl', ($scope, $location, Post) ->
       $scope.post =
         url: 'http://',
         title: ''
+
+  $scope.logout = ->
+    Auth.logout()
 )
 
 #@ sourceMappingURL=nav.js.map

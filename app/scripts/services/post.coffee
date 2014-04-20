@@ -15,5 +15,3 @@ app.factory('Post', ($firebase, FIREBASE_URL) ->
       posts.$remove(postId)
 
 )
-
-#@ sourceMappingURL=post.js.map

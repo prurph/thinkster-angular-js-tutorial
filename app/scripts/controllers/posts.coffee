@@ -8,5 +8,3 @@ app.controller 'PostsCtrl', ($scope, $location, Post) ->
 
   $scope.deletePost = (postId) ->
     Post.delete(postId)
-
-#@ sourceMappingURL=posts.js.map
