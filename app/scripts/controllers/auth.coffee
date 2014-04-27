@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('AuthCtrl', ($scope, $location, Auth) ->
+app.controller('AuthCtrl', ($scope, $location, Auth, User) ->
   if Auth.signedIn() then $location.path('/')
 
   $scope.$on('$firebaseSimpleLogin:login', ->
@@ -8,14 +8,14 @@ app.controller('AuthCtrl', ($scope, $location, Auth) ->
   )
 
   $scope.login = ->
-    Auth.login($scope.user).then ->
+    Auth.login($scope.user).then (authUser) ->
       $location.path('/')
     , (error) ->
       $scope.error = error.toString()
 
   $scope.register = ->
     Auth.register($scope.user).then (authUser) ->
-      console.log(authUser)
+      User.create(authUser, $scope.user.username)
       $location.path('/')
     , (error) ->
       $scope.error = error.toString()

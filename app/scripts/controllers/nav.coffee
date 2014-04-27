@@ -6,14 +6,13 @@ app.controller('NavCtrl', ($scope, $location, Post, Auth) ->
     title: ''
 
   $scope.submitPost = ->
-    Post.create($scope.post).then (ref) ->
-      $location.path '/posts/' + ref.name()
+    Post.create($scope.post).then (postId) ->
+      $location.path '/posts/' + postId
       $scope.post =
         url: 'http://',
         title: ''
 
   $scope.logout = ->
     Auth.logout()
-)
 
-#@ sourceMappingURL=nav.js.map
+)

@@ -7,7 +7,7 @@ app.factory('Auth', ($firebaseSimpleLogin, FIREBASE_URL, $rootScope) ->
 
   Auth =
     register: (user) ->
-      auth.$createUser user.email, user.password
+      auth.$createUser(user.email, user.password)
     signedIn: ->
       auth.user != null
     login: (user) ->

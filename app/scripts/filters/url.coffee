@@ -6,5 +6,3 @@ app.filter('hostnameFromUrl', ->
     url.href = str
     url.hostname
 )
-
-# @sourceMappingURL=url.js.map
