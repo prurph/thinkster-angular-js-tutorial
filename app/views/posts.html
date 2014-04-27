@@ -9,8 +9,8 @@
       <div class="info">
         <a href="{{ post.url }}">
           {{ post.title }}
-          <span class="url">({{ post.url | hostnameFromUrl }})</span>
         </a>
+        <span class="url">({{ post.url | hostnameFromUrl }})</span>
       </div>
       <div>
         <span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a>

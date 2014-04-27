@@ -1,7 +1,7 @@
 'use strict'
 
 app.controller 'PostsCtrl', ($scope, $location, Post) ->
-  $scope.posts = Post.all
+  $scope.posts = Post.all if $location.path() == '/'
   $scope.post =
     url: 'http://'
     title: ''

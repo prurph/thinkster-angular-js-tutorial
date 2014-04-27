@@ -29,5 +29,3 @@ app.config ($routeProvider) ->
     .otherwise redirectTo: '/'
 
 app.constant('FIREBASE_URL', 'https://vivid-fire-4076.firebaseio.com/')
-
-#@ sourceMappingURL=app.js.map
