@@ -32,4 +32,23 @@ app.factory('Post', ($firebase, FIREBASE_URL, User) ->
             user.$child('posts').$remove(postId)
         )
 
+    addComment: (postId, comment) ->
+      if User.signedIn()
+        user = User.getCurrent()
+
+        comment.username = user.username
+        comment.postId = postId
+
+        posts.$child(postId).$child('comments').$add(comment).then (ref) ->
+          user.$child('comments').$child(ref.name()).$set(
+            id: ref.name()
+            postId: postId
+          )
+
+    deleteComment: (post, comment, commentId) ->
+      if User.signedIn()
+        user = User.findByUsername(comment.username)
+
+        post.$child('comments').$remove(commentId).then () ->
+          user.$child('comments').$remove(commentId)
 )
